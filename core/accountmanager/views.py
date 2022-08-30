@@ -142,6 +142,7 @@ def VerifyOTP(request):
 @api_view(['POST'])
 @csrf_exempt
 def set_UserPassword(request):
+    # dhesg
     data=request.data
     try:
         user = UserToken.objects.get(access_token=request.META['HTTP_ACCESSTOKEN']).user
