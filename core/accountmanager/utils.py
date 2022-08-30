@@ -13,8 +13,15 @@ from accountmanager.models import UserOTP, UserToken
 from .repository import get_object
 from django.http import JsonResponse
 
+""" To hash the access-token"""
+def access_token():
+    import secrets
+    password_length = 13
+    token = secrets.token_urlsafe(password_length)
+    return token
+
 def get_user(accesstoken):
-    user=UserToken.objects.get(access_token=accesstoken).user
+    user=get_object(UserToken,{'access_token':accesstoken})
     return user
 
 def OTP_Validity(mobile,currentdatetime):
@@ -44,10 +51,10 @@ def AppResponse(code,data=None,message=None,access_token=None):
     from django.forms.models import model_to_dict
     try:
         data =model_to_dict(data)
-    except exception as e:
+    except Exception as e:
         data=""
     status_message= "Success" if code==200 else "Error"
-    return JsonResponse({"code": code,"message":message,"status":status_message,"data":data})
+    return JsonResponse({"code": code,"message":message,"status":status_message,"data":data,"access_token":str(access_token)})
 
 
 # def FilterResponse(code,data=None,message=None,access_token=None):

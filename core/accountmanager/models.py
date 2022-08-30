@@ -1,3 +1,4 @@
+from ipaddress import ip_address
 from django.db import models
 from django.contrib.auth import models as auth_models
 from django.utils import timezone
@@ -37,11 +38,17 @@ class User(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     last_logout = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_user = models.BooleanField(default=False)
+    is_staff= models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     pincode = models.CharField(max_length=8, null=True, blank=True)
-    is_validated = models.BooleanField(default=False)
+    state =models.CharField(max_length=50, null=True, blank=True)
+    country =models.CharField(max_length=50, null=True, blank=True)
+    city=models.CharField(max_length=50, null=True, blank=True)
+    geo_locations=models.CharField(max_length=100, null=True, blank=True)
+    ip_address=models.CharField(max_length=50, null=True, blank=True)
+    # is_validated = models.BooleanField(default=False)
     objects = UserManager()
-    USERNAME_FIELD = 'mobile'
+    USERNAME_FIELD = 'email'
     def __str__(self):
         return self.mobile
     
@@ -67,4 +74,4 @@ class UserToken(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.access_token
+        return self.user
