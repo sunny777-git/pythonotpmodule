@@ -1,5 +1,5 @@
 
-from core.accountmanager.utils import AppResponse, get_user
+from accountmanager.utils import AppResponse, get_user
 
 
 def user_role(func):

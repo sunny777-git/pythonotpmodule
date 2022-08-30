@@ -11,6 +11,7 @@ from django.utils.decorators import decorator_from_middleware
 from accountmanager.validators import validate_mobile, validate_user_otp, validate_user_role
 from accountmanager.models import User, UserOTP, UserToken
 from accountmanager.repository import filter_attribute, get_object, is_exists, store, update
+from accountmanager.decorators import user_role
 
 
 @api_view(['POST'])
@@ -157,7 +158,7 @@ def set_UserPassword(request):
     except Exception as e:
             return AppResponse(200,message="You can only change password for email")
 
-
+@user_role
 @api_view(['POST'])
 @csrf_exempt
 def EmailLogin(request):
