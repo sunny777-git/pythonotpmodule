@@ -51,7 +51,6 @@ class User(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     USERNAME_FIELD = 'email'
     def __str__(self):
         return self.mobile
-    
 
 
 class UserOTP(models.Model):

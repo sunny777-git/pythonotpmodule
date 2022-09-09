@@ -23,6 +23,8 @@ def validate_user_otp(data):
         return True
     else:
         return False
+
+
 # def uploadto_AWS(path, uploaded_by, category=None):
 #     s3 = boto3.client('s3', aws_access_key_id = 'AKIAJWSTVWT7F67VCMGQ',  aws_secret_access_key = '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',config=Config(signature_version='s3v4'))
 #     s3.upload_file(path, AWS_STORAGE_BUCKET_NAME, 'media/documents/'+name,ExtraArgs = {
