@@ -13,8 +13,7 @@ def read_data_from_xls(request):
     file=pd.ExcelFile('userlist.xlsx')
     df = pd.read_excel(file)
     print(df.head(1))
-    #head(1) = head method accepts no.of rows.
-
+    #head(1) = head method accepts no.of rows
 
 @api_view(['POST'])
 @csrf_exempt
