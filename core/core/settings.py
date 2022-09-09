@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accountmanager',
     'rest_framework',
     'corsheaders',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'my_pandas'
 ]
 
 MIDDLEWARE = [

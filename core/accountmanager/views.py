@@ -159,7 +159,6 @@ def set_UserPassword(request):
     except Exception as e:
             return AppResponse(200,message="You can only change password for email")
 
-@user_role
 @api_view(['POST'])
 @csrf_exempt
 def EmailLogin(request):
@@ -176,6 +175,9 @@ def EmailLogin(request):
                
                 
 
+# @api_view(['POST'])
+# @csrf_exempt
+# def EmailLogin(request):
 
 
     

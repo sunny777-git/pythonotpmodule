@@ -22,6 +22,7 @@ def access_token():
 
 def get_user(accesstoken):
     user=get_object(UserToken,{'access_token':accesstoken})
+    
     return user
 
 def OTP_Validity(mobile,currentdatetime):
